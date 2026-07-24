@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS store — data layer.
+   Ethos Labs store — data layer.
    Seed projects come from data/projects.json; user-submitted
    projects are overlaid from localStorage. Swap the internals
    of fetchSeed()/saveSubmission() for a real API later without

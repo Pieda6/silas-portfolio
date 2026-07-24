@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS artwork — deterministic generative cover art.
+   Ethos Labs artwork — deterministic generative cover art.
    Each slug seeds a flat-color geometric composition (arcs,
    checkers, halftones, stripes, blobs, stars) so every project
    gets distinctive, designed-looking imagery without stock or

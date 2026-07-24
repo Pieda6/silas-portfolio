@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS shared runtime — injects nav/footer/transition, boots
+   Ethos Labs shared runtime — injects nav/footer/transition, boots
    Lenis smooth scrolling, GSAP reveals, magnetic buttons,
    counters, toasts and modals. Light editorial edition.
    ============================================================ */
@@ -55,7 +55,7 @@
     nav.innerHTML = `
       <div class="container">
         <a class="nav-logo" href="index.html">
-          <span class="logo-mark">${ICONS.logo}</span>NEXUS
+          <span class="logo-mark">${ICONS.logo}</span>Ethos Labs
         </a>
         <ul class="nav-links">
           ${PAGES.map((p) => `<li><a href="${p.href}" class="${p.href === page ? 'is-active' : ''}">${p.label}</a></li>`).join('')}
@@ -92,7 +92,7 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <a class="nav-logo" href="index.html"><span class="logo-mark">${ICONS.logo}</span>NEXUS</a>
+            <a class="nav-logo" href="index.html"><span class="logo-mark">${ICONS.logo}</span>Ethos Labs</a>
             <p class="footer-tag">Where Web3 builders meet the capital that believes in them. Post your project. Get discovered. Get funded.</p>
           </div>
           <div class="footer-col">
@@ -112,7 +112,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <span>© ${new Date().getFullYear()} NEXUS — demo platform. Projects shown are illustrative.</span>
+          <span>© ${new Date().getFullYear()} Ethos Labs — demo platform. Projects shown are illustrative.</span>
           <span>Designed & built with care</span>
         </div>
       </div>`;

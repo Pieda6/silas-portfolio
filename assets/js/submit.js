@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS submit — 3-step animated wizard with validation,
+   Ethos Labs submit — 3-step animated wizard with validation,
    localStorage persistence and a confetti finale.
    ============================================================ */
 (function () {

@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS project detail — profile layout: art banner, round
+   Ethos Labs project detail — profile layout: art banner, round
    avatar, stat strip, pitch body, Connect modal.
    ============================================================ */
 (function () {
@@ -27,11 +27,11 @@
           </div>
         </div>`;
       window.Nexus.refresh(root);
-      document.title = 'Project not found — NEXUS';
+      document.title = 'Project not found — Ethos Labs';
       return;
     }
 
-    document.title = `${project.name} — NEXUS`;
+    document.title = `${project.name} — Ethos Labs`;
     render(root, project);
   });
 
@@ -143,8 +143,8 @@
       const name = root.querySelector('#ci-name').value.trim();
       const msg = root.querySelector('#ci-msg').value.trim();
       if (!name || !msg) { window.Nexus.toast('Add your name and a short message first.'); return; }
-      const subject = encodeURIComponent(`[NEXUS] Intro from ${name} → ${p.name}`);
-      const body = encodeURIComponent(`${msg}\n\n— ${name}\nvia NEXUS`);
+      const subject = encodeURIComponent(`[Ethos Labs] Intro from ${name} → ${p.name}`);
+      const body = encodeURIComponent(`${msg}\n\n— ${name}\nvia Ethos Labs`);
       location.href = `mailto:${p.contact || ''}?subject=${subject}&body=${body}`;
       window.Nexus.closeModal(modal);
       window.Nexus.toast('Opening your mail client…');
