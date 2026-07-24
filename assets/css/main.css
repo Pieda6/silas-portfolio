@@ -236,23 +236,22 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.05; letter-spa
 .hero-stack { position: relative; height: 520px; }
 @media (max-width: 940px) { .hero-stack { height: 440px; max-width: 420px; margin-inline: auto; } }
 .stack-card {
-  position: absolute; top: 50%; left: 50%;
-  width: min(300px, 78%);
+  /* width/left/top/margins are set in px by home.js — layout-measurement-proof */
+  position: absolute;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
   padding: 12px;
   box-shadow: var(--shadow-lg);
-  transform: translate(-50%, -50%);
   will-change: transform;
 }
-.stack-card canvas { border-radius: var(--r-md); aspect-ratio: 1 / 1; width: 100%; }
+.stack-card canvas { border-radius: var(--r-md); width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
 .stack-card .sc-meta { display: flex; align-items: center; justify-content: space-between; padding: 12px 6px 4px; }
 .stack-card .sc-name { font-family: var(--font-display); font-weight: 600; font-size: 1rem; display: flex; align-items: center; gap: 6px; }
 .stack-card .sc-price { font-size: 0.82rem; color: var(--muted); font-weight: 500; }
 
 .float-chip {
-  position: absolute; z-index: 5;
+  position: absolute; z-index: 5; white-space: nowrap;
   font-family: var(--font-display); font-weight: 600; font-size: 0.82rem;
   padding: 9px 16px; border-radius: 999px;
   border: 1px solid var(--ink);
