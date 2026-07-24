@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit your project — NEXUS</title>
+    <meta name="description" content="List your Web3 project on NEXUS in three minutes — pitch, category, chain, and raise details, live instantly for investors to discover.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23e879f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2304050c'/%3E%3Cpath d='M16 5 27 16 16 27 5 16Z' fill='url(%23g)'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="assets/vendor/lenis.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+    <section class="section" style="padding-top:calc(var(--nav-h) + 70px)">
+        <div class="container">
+            <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+                <span class="eyebrow" style="justify-content:center">Launchpad</span>
+                <h2>Put your project in <span class="text-gradient">orbit</span>.</h2>
+                <p>Three minutes from pitch to live listing. Investors are already browsing.</p>
+            </div>
+
+            <div class="wizard reveal" id="wizard">
+                <!-- Progress -->
+                <div class="wizard-progress">
+                    <div class="wp-step is-active"><div class="wp-dot">1</div><span class="wp-label">Basics</span></div>
+                    <div class="wp-line"></div>
+                    <div class="wp-step"><div class="wp-dot">2</div><span class="wp-label">Pitch</span></div>
+                    <div class="wp-line"></div>
+                    <div class="wp-step"><div class="wp-dot">3</div><span class="wp-label">Links &amp; review</span></div>
+                </div>
+
+                <!-- Step 1: Basics -->
+                <div class="wizard-panel is-current" data-step="1">
+                    <div class="field">
+                        <label for="f-name">Project name</label>
+                        <input id="f-name" type="text" placeholder="e.g. AuroraSwap" autocomplete="off">
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="f-category">Category</label>
+                            <select id="f-category">
+                                <option value="">Select…</option>
+                                <option>DeFi</option>
+                                <option>NFT</option>
+                                <option>Gaming</option>
+                                <option>Infra</option>
+                                <option>DAO</option>
+                                <option>AI x Web3</option>
+                            </select>
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="field">
+                            <label for="f-chain">Primary chain</label>
+                            <select id="f-chain">
+                                <option value="">Select…</option>
+                                <option>Ethereum</option>
+                                <option>Solana</option>
+                                <option>Base</option>
+                                <option>Arbitrum</option>
+                                <option>Polygon</option>
+                                <option>Other</option>
+                            </select>
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="f-stage">Funding stage</label>
+                            <select id="f-stage">
+                                <option value="">Select…</option>
+                                <option>Pre-seed</option>
+                                <option>Seed</option>
+                                <option>Series A</option>
+                                <option>Series B</option>
+                                <option>Token round</option>
+                            </select>
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="field">
+                            <label for="f-location">Location <span class="hint">(optional)</span></label>
+                            <input id="f-location" type="text" placeholder="e.g. Lisbon, Portugal">
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div class="wizard-nav">
+                        <span></span>
+                        <button class="btn btn-primary" data-next data-magnetic>Continue →</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Pitch -->
+                <div class="wizard-panel" data-step="2">
+                    <div class="field">
+                        <label for="f-tagline">Tagline</label>
+                        <input id="f-tagline" type="text" placeholder="One line that makes an investor lean in.">
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="field">
+                        <label for="f-blurb">Blurb — your 280-character pitch</label>
+                        <textarea id="f-blurb" maxlength="280" placeholder="What you're building, who it's for, and why it wins."></textarea>
+                        <div class="char-count" id="blurb-count">0 / 280</div>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="field">
+                        <label for="f-description">Extended pitch <span class="hint">(optional — separate paragraphs with a blank line)</span></label>
+                        <textarea id="f-description" style="min-height:160px" placeholder="Traction, product, market, moat…"></textarea>
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="field">
+                        <label for="f-seeking">Raising <span class="hint">(optional)</span></label>
+                        <input id="f-seeking" type="text" placeholder="e.g. $5M">
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="wizard-nav">
+                        <button class="btn btn-ghost" data-back data-magnetic>← Back</button>
+                        <button class="btn btn-primary" data-next data-magnetic>Continue →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Links & review -->
+                <div class="wizard-panel" data-step="3">
+                    <div class="field">
+                        <label for="f-contact">Contact email</label>
+                        <input id="f-contact" type="email" placeholder="founders@yourproject.xyz">
+                        <span class="error-msg"></span>
+                    </div>
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="f-website">Website <span class="hint">(optional)</span></label>
+                            <input id="f-website" type="url" placeholder="https://…">
+                            <span class="error-msg"></span>
+                        </div>
+                        <div class="field">
+                            <label for="f-twitter">Twitter / X <span class="hint">(optional)</span></label>
+                            <input id="f-twitter" type="url" placeholder="https://x.com/…">
+                            <span class="error-msg"></span>
+                        </div>
+                    </div>
+                    <div class="review-block glass">
+                        <h4>Review your listing</h4>
+                        <div id="review-list"></div>
+                    </div>
+                    <div class="wizard-nav">
+                        <button class="btn btn-ghost" data-back data-magnetic>← Back</button>
+                        <button class="btn btn-primary" data-next data-magnetic>🚀 Go live</button>
+                    </div>
+                </div>
+
+                <!-- Success -->
+                <div class="wizard-success" id="wizard-success">
+                    <div class="success-orb">🚀</div>
+                    <h2 style="font-size:2.2rem;margin-bottom:12px">You're in <span class="text-gradient">orbit</span>.</h2>
+                    <p style="color:var(--muted);max-width:440px;margin:0 auto 30px">Your project is live in the directory. It's stored in this browser for the demo — plug in a backend and it goes global.</p>
+                    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+                        <a class="btn btn-primary" id="success-link" href="explore.html" data-magnetic>View your listing</a>
+                        <a class="btn btn-ghost" href="explore.html" data-magnetic>Browse the directory</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
+    <script src="assets/vendor/lenis.min.js"></script>
+    <script src="assets/js/store.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/submit.js"></script>
+</body>
+</html>
