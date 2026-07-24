@@ -12,6 +12,9 @@
     const grid = document.getElementById('explore-grid');
     if (!grid) return;
 
+    const searchIco = document.getElementById('search-ico');
+    if (searchIco) searchIco.innerHTML = window.Nexus.icon('search');
+
     try {
       // Brief skeleton shimmer so the "loading" state is part of the choreography
       grid.innerHTML = Array.from({ length: 6 }, () => '<div class="skeleton-card"></div>').join('');
@@ -103,7 +106,7 @@
 
     const draw = () => {
       if (!list.length) {
-        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="big">🛰️</div><p>No projects match that filter — adjust your search or be the first to <a class="text-gradient" href="submit.html" style="font-weight:600">submit one</a>.</p></div>';
+        grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1"><div class="big">Nothing here yet</div><p>No projects match that filter — adjust your search or be the first to <a href="submit.html" style="font-weight:600;text-decoration:underline">submit one</a>.</p></div>';
         return;
       }
       grid.innerHTML = list.map((p) => window.Nexus.projectCardHTML(p)).join('');

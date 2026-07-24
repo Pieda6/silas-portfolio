@@ -2,12 +2,14 @@
 
 An immersive, animation-heavy discovery platform for the Web3 space. Projects post their pitch and blurb; investors explore, filter, and connect with the teams behind them.
 
+**The design:** light editorial marketplace — warm canvas, ink typography, white cards, black pill CTAs, and a flat six-color accent palette. Every project gets unique **deterministic generative cover art** (canvas compositions seeded from its slug) so the directory is imagery-led without stock or copyrighted artwork.
+
 **The experience:**
-- 🌌 WebGL hero — a 9,000-particle spiral galaxy (Three.js custom shaders) that reacts to your cursor and scroll
-- 🎞️ GSAP + ScrollTrigger scroll choreography, Lenis smooth scrolling, staggered reveals
-- 🧲 Magnetic buttons, 3D-tilt project cards with pointer-tracked glare, custom glowing cursor
-- 📡 Live project ticker, animated counters, page-transition wipe, glitch 404
-- ♿ Full `prefers-reduced-motion` fallback (also covers missing WebGL)
+- 🎴 Fanned hero stack of project covers with deal-out entrance, pointer parallax, and auto-cycling
+- 🎞️ GSAP + ScrollTrigger reveals, Lenis smooth scrolling, magnetic buttons, lift-on-hover cards
+- 🖼️ Generative art engine (`assets/js/artwork.js`): arcs, checkers, halftones, stripes, blobs — same slug, same art, everywhere
+- 📡 Black ticker band, animated counters, color-block sections, clean 404
+- ♿ Full `prefers-reduced-motion` fallback
 
 ## Pages
 
@@ -17,7 +19,7 @@ An immersive, animation-heavy discovery platform for the Web3 space. Projects po
 | `explore.html` | Directory — filter by category/chain, search, sort, animated re-layout |
 | `project.html?id=<slug>` | Full pitch, raise snapshot, team, links, **Connect** modal |
 | `submit.html` | 3-step animated wizard to post a project (live instantly) |
-| `404.html` | Glitch not-found page |
+| `404.html` | Not-found page |
 | `portfolio.html` | Silas's original portfolio (preserved) |
 
 ## Run it locally
@@ -29,7 +31,7 @@ python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
-No build step. All libraries (Three.js, GSAP, ScrollTrigger, Lenis) and fonts are vendored in `assets/vendor` and `assets/fonts` — the site is fully self-contained.
+No build step. All libraries (GSAP, ScrollTrigger, Lenis) and fonts are vendored in `assets/vendor` and `assets/fonts` — the site is fully self-contained.
 
 ## Architecture
 
@@ -37,8 +39,8 @@ No build step. All libraries (Three.js, GSAP, ScrollTrigger, Lenis) and fonts ar
 assets/js/
 ├── store.js       Data layer: seed JSON + localStorage overlay  ← swap for a real API here
 ├── animations.js  Shared runtime: nav/footer injection, Lenis, reveals, tilt, cursor, modals
-├── webgl.js       Three.js galaxy hero
-├── home.js        Landing choreography, ticker, featured grid
+├── artwork.js     Deterministic generative cover art engine
+├── home.js        Hero card stack, ticker, featured grid
 ├── explore.js     Filters, search, sort, FLIP-style re-layout
 ├── project.js     Detail renderer + Connect modal
 └── submit.js      Wizard, validation, confetti

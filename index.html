@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEXUS — Where Web3 projects meet capital</title>
-    <meta name="description" content="NEXUS is the immersive discovery hub for Web3. Projects post their pitch; investors discover, connect, and fund the next generation of on-chain builders.">
+    <meta name="description" content="NEXUS is the discovery hub for Web3. Projects post their pitch; investors discover, connect, and fund the next generation of on-chain builders.">
     <meta property="og:title" content="NEXUS — Where Web3 projects meet capital">
     <meta property="og:description" content="Post your project. Get discovered. Get funded.">
     <meta property="og:type" content="website">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23e879f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2304050c'/%3E%3Cpath d='M16 5 27 16 16 27 5 16Z' fill='url(%23g)'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111114'/%3E%3Cpath d='M16 6 26 16 16 26 6 16Z' fill='%23b7f04b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="assets/vendor/lenis.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -16,21 +16,27 @@
 
     <!-- ================= HERO ================= -->
     <section class="hero">
-        <div id="hero-canvas"></div>
         <div class="container hero-inner">
-            <div class="hero-badge"><span class="pulse"></span> 10+ projects live · investors onboarding now</div>
-            <h1>
-                <span class="line"><span>Where Web3 projects</span></span>
-                <span class="line"><span>meet <span class="text-gradient">the capital</span></span></span>
-                <span class="line"><span>that gets it.</span></span>
-            </h1>
-            <p class="hero-sub">NEXUS is the immersive discovery hub for the on-chain economy. Builders post their pitch. Investors explore, connect, and fund what's next — no gatekeepers, no noise.</p>
-            <div class="hero-ctas">
-                <a href="explore.html" class="btn btn-primary" data-magnetic>Explore projects ↗</a>
-                <a href="submit.html" class="btn btn-ghost" data-magnetic>Post your project</a>
+            <div>
+                <div class="hero-badge"><span class="pulse"></span> 10+ projects live &nbsp;·&nbsp; investors onboarding now</div>
+                <h1>
+                    <span class="line"><span>Where Web3 projects</span></span>
+                    <span class="line"><span>meet <span class="mark">capital</span> that</span></span>
+                    <span class="line"><span>actually gets it.</span></span>
+                </h1>
+                <p class="hero-sub">NEXUS is the discovery hub for the on-chain economy. Builders post their pitch. Investors explore, connect, and fund what's next — no gatekeepers, no noise.</p>
+                <div class="hero-ctas">
+                    <a href="explore.html" class="btn btn-primary" data-magnetic>Explore projects</a>
+                    <a href="submit.html" class="btn btn-ghost" data-magnetic>Post your project</a>
+                </div>
+            </div>
+            <div class="hero-stack" id="hero-stack">
+                <span class="float-chip" style="top:6%;left:2%;background:var(--yellow)">DeFi</span>
+                <span class="float-chip" style="top:14%;right:0%;background:var(--pink)">NFT</span>
+                <span class="float-chip" style="bottom:10%;left:6%;background:var(--sky)">Infra</span>
+                <span class="float-chip" style="bottom:4%;right:8%;background:var(--lime)">AI x Web3</span>
             </div>
         </div>
-        <div class="hero-scroll-hint"><div class="wheel"></div>Scroll</div>
     </section>
 
     <!-- ================= TICKER ================= -->
@@ -39,23 +45,27 @@
     </div>
 
     <!-- ================= STATS ================= -->
-    <section class="section" style="padding-bottom:40px">
+    <section class="section" style="padding-bottom:30px">
         <div class="container">
             <div class="stats-row">
-                <div class="stat-tile glass reveal">
-                    <div class="stat-value text-gradient" data-count="88.4" data-prefix="$" data-suffix="M" data-decimals="1">$0M</div>
+                <div class="stat-tile reveal">
+                    <div class="stat-sq" style="background:var(--lime)"></div>
+                    <div class="stat-value" data-count="88.4" data-prefix="$" data-suffix="M" data-decimals="1">$0M</div>
                     <div class="stat-label">Raised by listed projects</div>
                 </div>
-                <div class="stat-tile glass reveal" data-delay="0.1">
-                    <div class="stat-value text-gradient" data-count="6" data-suffix=" chains">0</div>
+                <div class="stat-tile reveal" data-delay="0.08">
+                    <div class="stat-sq" style="background:var(--pink)"></div>
+                    <div class="stat-value" data-count="6" data-suffix=" chains">0</div>
                     <div class="stat-label">Ecosystems represented</div>
                 </div>
-                <div class="stat-tile glass reveal" data-delay="0.2">
-                    <div class="stat-value text-gradient" data-count="640" data-suffix="+">0</div>
+                <div class="stat-tile reveal" data-delay="0.16">
+                    <div class="stat-sq" style="background:var(--sky)"></div>
+                    <div class="stat-value" data-count="640" data-suffix="+">0</div>
                     <div class="stat-label">Investor intros made</div>
                 </div>
-                <div class="stat-tile glass reveal" data-delay="0.3">
-                    <div class="stat-value text-gradient" data-count="72" data-suffix=" hrs">0</div>
+                <div class="stat-tile reveal" data-delay="0.24">
+                    <div class="stat-sq" style="background:var(--yellow)"></div>
+                    <div class="stat-value" data-count="72" data-suffix=" hrs">0</div>
                     <div class="stat-label">Median time to first intro</div>
                 </div>
             </div>
@@ -66,94 +76,63 @@
     <section class="section" id="how">
         <div class="container">
             <div class="section-head reveal">
-                <span class="eyebrow">How it works</span>
-                <h2>Three steps from <span class="text-gradient">building</span> to <span class="text-gradient">backed</span>.</h2>
+                <span class="eyebrow"><span class="dot" style="background:var(--pink)"></span>How it works</span>
+                <h2>Three steps from <span class="mark">building</span> to backed.</h2>
                 <p>A launchpad-grade showcase without the launchpad politics. Your project, your narrative, in front of the people writing checks.</p>
             </div>
-
-            <div class="story-step">
-                <div class="story-copy reveal">
-                    <div class="story-num">01</div>
+            <div class="how-grid">
+                <div class="how-card reveal" style="background:var(--lime)">
+                    <span class="how-num">01</span>
                     <h3>Post your project</h3>
-                    <p>Ship your pitch in minutes: name, blurb, chain, stage, and what you're raising. No applications, no waitlists — your project page goes live instantly.</p>
+                    <p>Ship your pitch in minutes — name, blurb, chain, stage, raise. No applications, no waitlists. Live instantly.</p>
                 </div>
-                <div class="story-visual reveal">
-                    <div class="orbit-ring r1"></div>
-                    <div class="orbit-ring r2"></div>
-                    <div class="orbit-core">🛠️</div>
-                    <div class="orbit-node">📡</div>
-                    <div class="orbit-node">📜</div>
-                    <div class="orbit-node">⛓️</div>
-                </div>
-            </div>
-
-            <div class="story-step">
-                <div class="story-copy reveal">
-                    <div class="story-num">02</div>
+                <div class="how-card reveal" data-delay="0.08" style="background:var(--yellow)">
+                    <span class="how-num">02</span>
                     <h3>Get discovered</h3>
-                    <p>Investors browse a live directory filtered by category, chain, and stage. Trending projects surface to the top — signal, not follower counts.</p>
+                    <p>Investors browse a live directory filtered by category, chain, and stage. Trending surfaces on signal, not follower counts.</p>
                 </div>
-                <div class="story-visual reveal">
-                    <div class="orbit-ring r1"></div>
-                    <div class="orbit-ring r2"></div>
-                    <div class="orbit-core">🔭</div>
-                    <div class="orbit-node">💠</div>
-                    <div class="orbit-node">🧭</div>
-                    <div class="orbit-node">✨</div>
-                </div>
-            </div>
-
-            <div class="story-step">
-                <div class="story-copy reveal">
-                    <div class="story-num">03</div>
+                <div class="how-card reveal" data-delay="0.16" style="background:var(--pink)">
+                    <span class="how-num">03</span>
                     <h3>Connect &amp; close</h3>
-                    <p>One click opens a direct line to the founding team. Warm intros at cold-email speed — then take the conversation wherever deals get done.</p>
-                </div>
-                <div class="story-visual reveal">
-                    <div class="orbit-ring r1"></div>
-                    <div class="orbit-ring r2"></div>
-                    <div class="orbit-core">🤝</div>
-                    <div class="orbit-node">⚡</div>
-                    <div class="orbit-node">💬</div>
-                    <div class="orbit-node">💎</div>
+                    <p>One click opens a direct line to the founding team. Warm intros at cold-email speed — then close wherever deals get done.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ================= FEATURED ================= -->
-    <section class="section" id="featured">
+    <section class="section" id="featured" style="padding-top:30px">
         <div class="container">
             <div class="section-head reveal">
-                <span class="eyebrow">Trending now</span>
+                <span class="eyebrow"><span class="dot" style="background:var(--lime)"></span>Trending now</span>
                 <h2>Projects the smart money is watching.</h2>
             </div>
             <div class="project-grid" id="featured-grid"></div>
-            <div style="text-align:center;margin-top:44px" class="reveal">
-                <a href="explore.html" class="btn btn-ghost" data-magnetic>View the full directory →</a>
+            <div style="text-align:center;margin-top:42px" class="reveal">
+                <a href="explore.html" class="btn btn-ghost" data-magnetic>View the full directory</a>
             </div>
         </div>
     </section>
 
     <!-- ================= CTA ================= -->
-    <section class="section">
+    <section class="section" style="padding-top:20px">
         <div class="container">
-            <div class="glass reveal" style="padding:70px 40px;text-align:center;border-radius:28px;position:relative;overflow:hidden">
-                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 120%,rgba(139,92,246,.25),transparent 70%);pointer-events:none"></div>
-                <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);max-width:640px;margin:0 auto 18px">Building something the world hasn't seen yet?</h2>
-                <p style="color:var(--muted);max-width:480px;margin:0 auto 34px">Put it in front of the investors hunting for exactly that. Listing takes three minutes.</p>
-                <a href="submit.html" class="btn btn-primary" data-magnetic>Launch your project on NEXUS 🚀</a>
+            <div class="cta-band reveal">
+                <div class="cta-deco" style="width:220px;height:220px;background:var(--lime);top:-110px;left:-70px;opacity:.9"></div>
+                <div class="cta-deco" style="width:150px;height:150px;background:var(--purple);bottom:-75px;right:-40px"></div>
+                <h2 style="position:relative">Building something the world hasn't seen yet?</h2>
+                <p style="position:relative">Put it in front of the investors hunting for exactly that. Listing takes three minutes.</p>
+                <a href="submit.html" class="btn btn-lime" data-magnetic style="position:relative">List your project on NEXUS</a>
             </div>
         </div>
     </section>
 
-    <script src="assets/vendor/three.min.js"></script>
     <script src="assets/vendor/gsap.min.js"></script>
     <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="assets/vendor/lenis.min.js"></script>
     <script src="assets/js/store.js"></script>
+    <script src="assets/js/artwork.js"></script>
     <script src="assets/js/animations.js"></script>
-    <script src="assets/js/webgl.js"></script>
     <script src="assets/js/home.js"></script>
 </body>
 </html>
