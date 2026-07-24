@@ -192,15 +192,14 @@
   }
 
   function paintCanvas(canvas, slug, opts) {
-    const rect = canvas.getBoundingClientRect();
-    const cssW = Math.max(2, rect.width || canvas.clientWidth || 300);
-    const cssH = Math.max(2, rect.height || canvas.clientHeight || 225);
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(cssW * dpr);
-    canvas.height = Math.round(cssH * dpr);
-    const ctx = canvas.getContext('2d');
-    ctx.scale(dpr, dpr);
-    compose(ctx, cssW, cssH, slug, opts);
+    // Fixed logical resolution — never measure the DOM. Layout timing and
+    // transforms (notably on iOS Safari) can report zero/tiny rects, which
+    // would bake a blank bitmap. CSS + object-fit handle display sizing.
+    const w = Math.max(2, (opts && opts.w) || 800);
+    const h = Math.max(2, (opts && opts.h) || 600);
+    canvas.width = w;
+    canvas.height = h;
+    compose(canvas.getContext('2d'), w, h, slug, opts);
   }
 
   const Artwork = {
@@ -212,6 +211,8 @@
         paintCanvas(c, c.dataset.art, {
           simple: 'artSimple' in c.dataset,
           noFrame: 'artNoframe' in c.dataset,
+          w: parseInt(c.dataset.artW || '', 10) || undefined,
+          h: parseInt(c.dataset.artH || '', 10) || undefined,
         });
       });
     },

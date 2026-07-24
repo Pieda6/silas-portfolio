@@ -47,7 +47,7 @@
       <div class="team-grid">
         ${p.team.map((m) => `
           <div class="team-card reveal">
-            <div class="team-avatar"><canvas data-art="${p.slug}-${esc(m.name)}" data-art-simple data-art-noframe></canvas></div>
+            <div class="team-avatar"><canvas data-art="${p.slug}-${esc(m.name)}" data-art-simple data-art-noframe data-art-w="240" data-art-h="240"></canvas></div>
             <div>
               <div class="t-name">${esc(m.name)}</div>
               <div class="t-role">${esc(m.role)}</div>
@@ -65,8 +65,8 @@
       <header class="detail-hero">
         <div class="container">
           <div class="detail-banner-wrap">
-            <div class="detail-banner"><canvas data-art="${p.slug}" data-art-noframe></canvas></div>
-            <div class="detail-avatar"><canvas data-art="${p.slug}-avatar" data-art-simple data-art-noframe></canvas></div>
+            <div class="detail-banner"><canvas data-art="${p.slug}" data-art-noframe data-art-w="1600" data-art-h="480"></canvas></div>
+            <div class="detail-avatar"><canvas data-art="${p.slug}-avatar" data-art-simple data-art-noframe data-art-w="240" data-art-h="240"></canvas></div>
           </div>
           <div class="detail-head">
             <div class="detail-title-row">
