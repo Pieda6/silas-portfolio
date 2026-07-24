@@ -1,6 +1,6 @@
 /* ============================================================
-   NEXUS project detail — renders one project from ?id=<slug>,
-   with animated stats and the "Connect" modal.
+   NEXUS project detail — profile layout: art banner, round
+   avatar, stat strip, pitch body, Connect modal.
    ============================================================ */
 (function () {
   'use strict';
@@ -19,11 +19,11 @@
 
     if (!project) {
       root.innerHTML = `
-        <div class="glitch-wrap" style="min-height:70svh">
+        <div class="notfound-wrap" style="min-height:80svh;border-radius:0 0 26px 26px">
           <div>
-            <div class="glitch" data-text="LOST">LOST</div>
-            <p style="color:var(--muted);margin:18px 0 28px">That project drifted out of orbit — it may only exist in another browser's local data.</p>
-            <a class="btn btn-primary" href="explore.html" data-magnetic>Back to Explore</a>
+            <div class="notfound-code">L<em>o</em>st</div>
+            <p>That project isn't listed here — it may only exist in another browser's local data.</p>
+            <a class="btn btn-lime" href="explore.html" data-magnetic>Back to Explore</a>
           </div>
         </div>`;
       window.Nexus.refresh(root);
@@ -37,7 +37,8 @@
 
   function render(root, p) {
     const esc = window.Nexus.escapeHTML;
-    const grad = window.NexusStore.gradientFor(p.slug);
+    const icon = window.Nexus.icon;
+    const catColor = window.NexusArt.categoryColor(p.category);
     const paragraphs = String(p.description || p.blurb).split(/\n\n+/)
       .map((par) => `<p>${esc(par)}</p>`).join('');
 
@@ -45,8 +46,8 @@
       <h2 class="reveal">Team</h2>
       <div class="team-grid">
         ${p.team.map((m) => `
-          <div class="team-card glass reveal">
-            <div class="team-avatar" style="background:${grad}">${esc(m.name.charAt(0))}</div>
+          <div class="team-card reveal">
+            <div class="team-avatar"><canvas data-art="${p.slug}-${esc(m.name)}" data-art-simple data-art-noframe></canvas></div>
             <div>
               <div class="t-name">${esc(m.name)}</div>
               <div class="t-role">${esc(m.role)}</div>
@@ -55,27 +56,37 @@
       </div>` : '';
 
     const links = [
-      p.links?.website && `<a href="${esc(p.links.website)}" target="_blank" rel="noopener">🌐 Website</a>`,
-      p.links?.twitter && `<a href="${esc(p.links.twitter)}" target="_blank" rel="noopener">𝕏 Twitter / X</a>`,
-      p.links?.whitepaper && `<a href="${esc(p.links.whitepaper)}" target="_blank" rel="noopener">📄 Whitepaper</a>`,
+      p.links?.website && `<a href="${esc(p.links.website)}" target="_blank" rel="noopener"><span class="li-ico">${icon('globe')}</span>Website</a>`,
+      p.links?.twitter && `<a href="${esc(p.links.twitter)}" target="_blank" rel="noopener"><span class="li-ico">${icon('x')}</span>Twitter / X</a>`,
+      p.links?.whitepaper && `<a href="${esc(p.links.whitepaper)}" target="_blank" rel="noopener"><span class="li-ico">${icon('doc')}</span>Whitepaper</a>`,
     ].filter(Boolean).join('');
 
     root.innerHTML = `
       <header class="detail-hero">
-        <div class="detail-banner" style="background:${grad}"></div>
         <div class="container">
-          <div class="detail-head reveal">
-            <div class="detail-logo" style="background:${grad}">${window.NexusStore.monogram(p.name)}</div>
-            <div class="detail-title">
+          <div class="detail-banner-wrap">
+            <div class="detail-banner"><canvas data-art="${p.slug}" data-art-noframe></canvas></div>
+            <div class="detail-avatar"><canvas data-art="${p.slug}-avatar" data-art-simple data-art-noframe></canvas></div>
+          </div>
+          <div class="detail-head">
+            <div class="detail-title-row">
               <h1>${esc(p.name)}</h1>
-              <p class="tagline">${esc(p.tagline)}</p>
-              <div class="detail-meta">
-                <span class="chip chip-cat">${esc(p.category)}</span>
-                <span class="chip chip-chain">${esc(p.chain)}</span>
-                <span class="chip">${esc(p.stage)}</span>
-                <span class="chip">Founded ${esc(p.founded)}</span>
-                <span class="chip">${esc(p.location)}</span>
-              </div>
+              ${window.Nexus.verifiedBadge}
+            </div>
+            <p class="detail-tagline">${esc(p.tagline)}</p>
+            <div class="detail-meta">
+              <span class="chip chip-cat" style="--cat:${catColor}">${esc(p.category)}</span>
+              <span class="chip">${esc(p.chain)}</span>
+              <span class="chip">${esc(p.stage)}</span>
+              <span class="chip">Founded ${esc(p.founded)}</span>
+              <span class="chip">${esc(p.location)}</span>
+            </div>
+            <div class="stat-strip reveal">
+              <div class="ss-item"><div class="ss-v">${esc(window.NexusStore.formatRaised(p))}</div><div class="ss-k">Raised</div></div>
+              <div class="ss-item"><div class="ss-v">${esc(p.seeking || '—')}</div><div class="ss-k">Seeking</div></div>
+              <div class="ss-item"><div class="ss-v">${esc(p.valuation || '—')}</div><div class="ss-k">Valuation</div></div>
+              <div class="ss-item"><div class="ss-v">${esc(p.users || '—')}</div><div class="ss-k">Users</div></div>
+              <div class="ss-item"><div class="ss-v">${esc(p.tvl || '—')}</div><div class="ss-k">TVL</div></div>
             </div>
           </div>
         </div>
@@ -90,24 +101,20 @@
           </article>
 
           <aside class="detail-side">
-            <div class="side-card glass reveal">
-              <h3>Raise snapshot</h3>
-              <div class="side-stat"><span class="k">Raised to date</span><span class="v">${esc(window.NexusStore.formatRaised(p))}</span></div>
-              <div class="side-stat"><span class="k">Now seeking</span><span class="v">${esc(p.seeking || '—')}</span></div>
-              <div class="side-stat"><span class="k">Valuation</span><span class="v">${esc(p.valuation || '—')}</span></div>
-              <div class="side-stat"><span class="k">Users</span><span class="v">${esc(p.users || '—')}</span></div>
-              <div class="side-stat"><span class="k">TVL</span><span class="v">${esc(p.tvl || '—')}</span></div>
-              <button class="btn btn-primary" id="connect-btn" data-magnetic style="width:100%;margin-top:20px">⚡ Connect with ${esc(p.name)}</button>
+            <div class="side-card reveal">
+              <h3>Get in touch</h3>
+              <p style="color:var(--muted);font-size:0.92rem;margin-bottom:18px">Interested in ${esc(p.name)}'s ${esc(p.stage)} round? Introduce yourself directly to the founding team.</p>
+              <button class="btn btn-primary" id="connect-btn" data-magnetic style="width:100%">Connect with ${esc(p.name)}</button>
             </div>
-            ${links ? `<div class="side-card glass reveal"><h3>Links</h3><div class="side-links">${links}</div></div>` : ''}
+            ${links ? `<div class="side-card reveal"><h3>Links</h3><div class="side-links">${links}</div></div>` : ''}
           </aside>
         </div>
       </div>
 
       <div class="modal-backdrop" id="connect-modal">
         <div class="modal" style="position:relative">
-          <button class="modal-close" data-close>✕</button>
-          <h3>Connect with <span class="text-gradient">${esc(p.name)}</span></h3>
+          <button class="modal-close" data-close aria-label="Close">${icon('close')}</button>
+          <h3>Connect with ${esc(p.name)}</h3>
           <p class="modal-sub">Introduce yourself — your intro goes straight to the founding team.</p>
           <div class="field">
             <label for="ci-name">Your name / fund</label>
@@ -115,7 +122,7 @@
           </div>
           <div class="field">
             <label for="ci-msg">Message</label>
-            <textarea id="ci-msg" placeholder="We lead seed rounds in ${esc(p.category)} and would love to learn more…"></textarea>
+            <textarea id="ci-msg" placeholder="We lead ${esc(p.stage)} rounds in ${esc(p.category)} and would love to learn more…"></textarea>
           </div>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <button class="btn btn-primary" id="ci-send" data-magnetic>Send intro</button>

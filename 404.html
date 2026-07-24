@@ -5,19 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 — NEXUS</title>
     <meta name="robots" content="noindex">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23e879f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2304050c'/%3E%3Cpath d='M16 5 27 16 16 27 5 16Z' fill='url(%23g)'/%3E%3C/svg%3E">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23111114'/%3E%3Cpath d='M16 6 26 16 16 26 6 16Z' fill='%23b7f04b'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="assets/vendor/lenis.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+      /* Standalone page: hide the injected shell chrome against the black bg */
+      .site-footer { display: none; }
+      .site-nav { background: transparent; }
+      .site-nav .nav-links, .site-nav .nav-cta .btn { display: none; }
+      .site-nav .nav-logo { color: #fff; }
+    </style>
 </head>
 <body>
 
-    <div class="glitch-wrap">
+    <div class="notfound-wrap">
         <div>
-            <div class="glitch" data-text="404">404</div>
-            <p style="color:var(--muted);margin:20px 0 32px;max-width:420px">This page slipped through a wormhole. The projects, however, are exactly where you left them.</p>
+            <div class="notfound-code">4<em>0</em>4</div>
+            <p>This page doesn't exist. The projects, however, are exactly where you left them.</p>
             <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-                <a class="btn btn-primary" href="index.html" data-magnetic>Back to base</a>
-                <a class="btn btn-ghost" href="explore.html" data-magnetic>Explore projects</a>
+                <a class="btn btn-lime" href="index.html" data-magnetic>Back to home</a>
+                <a class="btn btn-white" href="explore.html" data-magnetic>Explore projects</a>
             </div>
         </div>
     </div>
@@ -26,6 +33,7 @@
     <script src="assets/vendor/ScrollTrigger.min.js"></script>
     <script src="assets/vendor/lenis.min.js"></script>
     <script src="assets/js/store.js"></script>
+    <script src="assets/js/artwork.js"></script>
     <script src="assets/js/animations.js"></script>
 </body>
 </html>

@@ -142,6 +142,8 @@
     document.querySelector('.wizard-progress').style.display = 'none';
     document.querySelectorAll('.wizard-panel').forEach((p) => p.classList.remove('is-current'));
     const success = document.getElementById('wizard-success');
+    const orb = document.getElementById('success-orb');
+    if (orb) orb.innerHTML = window.Nexus.icon('rocket');
     success.classList.add('is-shown');
     document.getElementById('success-link').href = `project.html?id=${encodeURIComponent(record.slug)}`;
 
@@ -164,7 +166,7 @@
     canvas.width = innerWidth;
     canvas.height = innerHeight;
 
-    const COLORS = ['#22d3ee', '#8b5cf6', '#e879f9', '#34d399', '#f59e0b', '#ffffff'];
+    const COLORS = ['#b7f04b', '#ffe14d', '#ff7ab2', '#8a5cf7', '#5cc8ff', '#ff9950', '#111114'];
     const parts = Array.from({ length: 180 }, () => ({
       x: canvas.width / 2 + (Math.random() - 0.5) * 140,
       y: canvas.height * 0.42,

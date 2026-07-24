@@ -1,8 +1,7 @@
 /* ============================================================
-   NEXUS animations — shared runtime for every page.
-   Injects nav/footer/cursor/transition overlay, boots Lenis
-   smooth scrolling, GSAP scroll reveals, magnetic buttons,
-   3D card tilt, counters, toasts and modals.
+   NEXUS shared runtime — injects nav/footer/transition, boots
+   Lenis smooth scrolling, GSAP reveals, magnetic buttons,
+   counters, toasts and modals. Light editorial edition.
    ============================================================ */
 (function () {
   'use strict';
@@ -14,41 +13,40 @@
   const PAGES = [
     { href: 'index.html', label: 'Home' },
     { href: 'explore.html', label: 'Explore' },
-    { href: 'submit.html', label: 'Submit project' },
+    { href: 'submit.html', label: 'Submit' },
   ];
 
+  /* ---------- Tiny inline SVG icon set (no emoji) ---------- */
+  const ICONS = {
+    logo: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 23 12 12 23 1 12Z"/></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 10 18 20 6"/></svg>',
+    arrow: '<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+    arrowUpRight: '<svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg>',
+    search: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+    globe: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z"/></svg>',
+    x: '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-6.8 7.8L23.3 22h-6.3l-4.9-6.4L6.5 22H3.4l7.3-8.3L1.6 2H8l4.4 5.9L18.9 2Zm-1.1 18h1.7L7.1 3.7H5.3L17.8 20Z"/></svg>',
+    doc: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h7M9 17h7"/></svg>',
+    bolt: '<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></svg>',
+    close: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg>',
+    mail: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 7 8.5-7"/></svg>',
+    copy: '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8.5" y="8.5" width="12" height="12" rx="2"/><path d="M15.5 5.5v-1a2 2 0 0 0-2-2h-9a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h1"/></svg>',
+    rocket: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-2.8-.8-.7-2.2-.7-3 .8Z"/><path d="m12 15-3-3c.6-1.5 1.4-2.9 2.5-4.2C14 5 17.6 3.4 21.5 2.5c-.9 3.9-2.5 7.5-5.3 10-1.3 1.1-2.7 1.9-4.2 2.5Z"/><path d="M9 12H4.5L7 7.9c.8-.4 1.7-.4 2.5 0M12 15v4.5l4.1-2.5c.4-.8.4-1.7 0-2.5"/></svg>',
+  };
+  function icon(name) { return ICONS[name] || ''; }
+
+  const verifiedBadge = `<span class="verified" title="Verified">${ICONS.check}</span>`;
+
   function currentPage() {
-    const path = location.pathname.split('/').pop() || 'index.html';
-    return path;
+    return location.pathname.split('/').pop() || 'index.html';
   }
 
-  /* ---------- Shell: overlay, cursor, nav, footer ---------- */
+  /* ---------- Shell ---------- */
   function injectShell() {
     const body = document.body;
 
-    // Page transition overlay
     const overlay = document.createElement('div');
     overlay.className = 'page-transition';
-    overlay.innerHTML = '<div class="pt-logo"><span class="text-gradient">NEXUS</span></div>';
     body.prepend(overlay);
-
-    // Ambient background layers
-    const glow = document.createElement('div');
-    glow.className = 'page-glow';
-    const grid = document.createElement('div');
-    grid.className = 'bg-grid';
-    body.prepend(grid);
-    body.prepend(glow);
-
-    // Custom cursor
-    if (FINE_POINTER && !REDUCED) {
-      const dot = document.createElement('div');
-      dot.className = 'cursor-dot';
-      const ring = document.createElement('div');
-      ring.className = 'cursor-ring';
-      body.append(dot, ring);
-      initCursor(dot, ring);
-    }
 
     // Nav
     const page = currentPage();
@@ -56,14 +54,14 @@
     nav.className = 'site-nav';
     nav.innerHTML = `
       <div class="container">
-        <a class="nav-logo" href="index.html" data-magnetic>
-          <span class="logo-mark">◈</span>NEXUS
+        <a class="nav-logo" href="index.html">
+          <span class="logo-mark">${ICONS.logo}</span>NEXUS
         </a>
         <ul class="nav-links">
           ${PAGES.map((p) => `<li><a href="${p.href}" class="${p.href === page ? 'is-active' : ''}">${p.label}</a></li>`).join('')}
         </ul>
         <div class="nav-cta">
-          <a href="submit.html" class="btn btn-primary btn-sm" data-magnetic>Launch your project</a>
+          <a href="submit.html" class="btn btn-primary btn-sm" data-magnetic>List your project</a>
           <button class="nav-burger" aria-label="Menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
@@ -71,6 +69,7 @@
       </div>
       <div class="mobile-menu">
         ${PAGES.map((p) => `<a href="${p.href}" class="${p.href === page ? 'is-active' : ''}">${p.label}</a>`).join('')}
+        <a href="submit.html" class="btn btn-primary" style="margin-top:10px;justify-content:center">List your project</a>
       </div>`;
     body.prepend(nav);
 
@@ -82,7 +81,7 @@
       burger.setAttribute('aria-expanded', String(open));
     });
 
-    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 16);
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
 
@@ -93,7 +92,7 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <a class="nav-logo" href="index.html"><span class="logo-mark">◈</span>NEXUS</a>
+            <a class="nav-logo" href="index.html"><span class="logo-mark">${ICONS.logo}</span>NEXUS</a>
             <p class="footer-tag">Where Web3 builders meet the capital that believes in them. Post your project. Get discovered. Get funded.</p>
           </div>
           <div class="footer-col">
@@ -114,12 +113,11 @@
         </div>
         <div class="footer-bottom">
           <span>© ${new Date().getFullYear()} NEXUS — demo platform. Projects shown are illustrative.</span>
-          <span>Built with ♥ and WebGL</span>
+          <span>Designed & built with care</span>
         </div>
       </div>`;
     body.append(footer);
 
-    // Toast host
     const toast = document.createElement('div');
     toast.className = 'toast';
     body.append(toast);
@@ -127,55 +125,25 @@
     return overlay;
   }
 
-  /* ---------- Custom cursor ---------- */
-  function initCursor(dot, ring) {
-    let mx = -100, my = -100, rx = -100, ry = -100;
-    window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; }, { passive: true });
-
-    (function loop() {
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
-      dot.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
-      const size = ring.offsetWidth;
-      ring.style.transform = `translate(${rx - size / 2}px, ${ry - size / 2}px)`;
-      requestAnimationFrame(loop);
-    })();
-
-    document.addEventListener('mouseover', (e) => {
-      if (e.target.closest('a, button, .project-card, input, select, textarea, .pill')) {
-        ring.classList.add('is-hovering');
-      }
-    });
-    document.addEventListener('mouseout', (e) => {
-      if (e.target.closest('a, button, .project-card, input, select, textarea, .pill')) {
-        ring.classList.remove('is-hovering');
-      }
-    });
-  }
-
-  /* ---------- Intro transition ---------- */
+  /* ---------- Intro ---------- */
   function playIntro(overlay) {
     if (REDUCED || typeof gsap === 'undefined') {
       overlay.classList.add('is-done');
       return;
     }
-    const tl = gsap.timeline({
+    gsap.to(overlay, {
+      opacity: 0, duration: 0.5, delay: 0.1, ease: 'power2.out',
       onComplete: () => overlay.classList.add('is-done'),
     });
-    tl.to(overlay.querySelector('.pt-logo'), { opacity: 0, y: -18, duration: 0.4, delay: 0.35, ease: 'power2.in' })
-      .to(overlay, { clipPath: 'inset(0 0 100% 0)', duration: 0.75, ease: 'power4.inOut' });
   }
 
-  /* ---------- Smooth scroll (Lenis) ---------- */
+  /* ---------- Smooth scroll ---------- */
   function initLenis() {
     if (REDUCED || typeof Lenis === 'undefined') return null;
-    const lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 1 });
+    const lenis = new Lenis({ lerp: 0.11 });
     function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
-    if (typeof ScrollTrigger !== 'undefined') {
-      lenis.on('scroll', ScrollTrigger.update);
-    }
-    // Anchor links
+    if (typeof ScrollTrigger !== 'undefined') lenis.on('scroll', ScrollTrigger.update);
     document.addEventListener('click', (e) => {
       const a = e.target.closest('a[href^="#"], a[href*="#"]');
       if (!a) return;
@@ -188,7 +156,7 @@
     return lenis;
   }
 
-  /* ---------- Scroll reveals ---------- */
+  /* ---------- Reveals ---------- */
   function initReveals(scope) {
     const els = (scope || document).querySelectorAll('.reveal');
     if (REDUCED || typeof gsap === 'undefined') {
@@ -196,67 +164,44 @@
       return;
     }
     els.forEach((el) => {
+      if (el.dataset.revealBound) return;
+      el.dataset.revealBound = '1';
       gsap.fromTo(el,
-        { opacity: 0, y: 42 },
+        { opacity: 0, y: 24 },
         {
-          opacity: 1, y: 0, duration: 1, ease: 'power3.out',
+          opacity: 1, y: 0, duration: 0.8, ease: 'power3.out',
           delay: parseFloat(el.dataset.delay || 0),
-          scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+          scrollTrigger: { trigger: el, start: 'top 90%', once: true },
         });
     });
   }
 
-  /* ---------- Magnetic buttons ---------- */
+  /* ---------- Magnetic buttons (subtle) ---------- */
   function initMagnetic(scope) {
     if (REDUCED || !FINE_POINTER || typeof gsap === 'undefined') return;
     (scope || document).querySelectorAll('[data-magnetic]').forEach((el) => {
       if (el.dataset.magneticBound) return;
       el.dataset.magneticBound = '1';
-      const strength = 0.35;
+      const strength = 0.18;
       el.addEventListener('mousemove', (e) => {
         const r = el.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        gsap.to(el, { x: x * strength, y: y * strength, duration: 0.4, ease: 'power2.out' });
+        gsap.to(el, {
+          x: (e.clientX - r.left - r.width / 2) * strength,
+          y: (e.clientY - r.top - r.height / 2) * strength,
+          duration: 0.35, ease: 'power2.out',
+        });
       });
       el.addEventListener('mouseleave', () => {
-        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.4)' });
+        gsap.to(el, { x: 0, y: 0, duration: 0.55, ease: 'elastic.out(1, 0.5)' });
       });
     });
   }
 
-  /* ---------- 3D tilt + glare on cards ---------- */
-  function initTilt(scope) {
-    if (REDUCED || !FINE_POINTER) return;
-    (scope || document).querySelectorAll('.project-card').forEach((card) => {
-      if (card.dataset.tiltBound) return;
-      card.dataset.tiltBound = '1';
-      card.addEventListener('mousemove', (e) => {
-        const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width;
-        const py = (e.clientY - r.top) / r.height;
-        card.style.setProperty('--gx', `${px * 100}%`);
-        card.style.setProperty('--gy', `${py * 100}%`);
-        if (typeof gsap !== 'undefined') {
-          gsap.to(card, {
-            rotateY: (px - 0.5) * 10,
-            rotateX: (0.5 - py) * 10,
-            transformPerspective: 900,
-            duration: 0.5, ease: 'power2.out',
-          });
-        }
-      });
-      card.addEventListener('mouseleave', () => {
-        if (typeof gsap !== 'undefined') {
-          gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.8, ease: 'elastic.out(1, 0.5)' });
-        }
-      });
-    });
-  }
-
-  /* ---------- Animated counters ---------- */
+  /* ---------- Counters ---------- */
   function initCounters(scope) {
     (scope || document).querySelectorAll('[data-count]').forEach((el) => {
+      if (el.dataset.countBound) return;
+      el.dataset.countBound = '1';
       const end = parseFloat(el.dataset.count);
       const prefix = el.dataset.prefix || '';
       const suffix = el.dataset.suffix || '';
@@ -269,14 +214,14 @@
       if (REDUCED || typeof gsap === 'undefined') { render(end); return; }
       const obj = { v: 0 };
       gsap.to(obj, {
-        v: end, duration: 2, ease: 'power2.out',
+        v: end, duration: 1.6, ease: 'power2.out',
         onUpdate: () => render(obj.v),
-        scrollTrigger: { trigger: el, start: 'top 90%', once: true },
+        scrollTrigger: { trigger: el, start: 'top 92%', once: true },
       });
     });
   }
 
-  /* ---------- Toast ---------- */
+  /* ---------- Toast / modal ---------- */
   let toastTimer;
   function toast(msg) {
     const el = document.querySelector('.toast');
@@ -284,43 +229,41 @@
     el.textContent = msg;
     el.classList.add('is-shown');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => el.classList.remove('is-shown'), 3200);
+    toastTimer = setTimeout(() => el.classList.remove('is-shown'), 3000);
   }
 
-  /* ---------- Modal helper ---------- */
   function openModal(backdrop) {
     backdrop.classList.add('is-open');
-    document.addEventListener('keydown', escClose);
-    function escClose(e) {
+    document.addEventListener('keydown', function escClose(e) {
       if (e.key === 'Escape') { closeModal(backdrop); document.removeEventListener('keydown', escClose); }
-    }
+    });
   }
-  function closeModal(backdrop) {
-    backdrop.classList.remove('is-open');
-  }
+  function closeModal(backdrop) { backdrop.classList.remove('is-open'); }
 
-  /* ---------- Card factory (shared by pages) ---------- */
+  /* ---------- Card factory ---------- */
   function projectCardHTML(p) {
-    const grad = window.NexusStore.gradientFor(p.slug);
+    const catColor = window.NexusArt.categoryColor(p.category);
     return `
       <a class="project-card" href="project.html?id=${encodeURIComponent(p.slug)}" data-slug="${p.slug}">
-        <div class="card-glare"></div>
-        <div class="card-top">
-          <div class="card-logo" style="background:${grad}">${window.NexusStore.monogram(p.name)}</div>
-          <div>
-            <div class="card-title">${escapeHTML(p.name)}</div>
-            <div class="card-sub">${escapeHTML(p.location || '')}</div>
+        <div class="card-cover">
+          <canvas data-art="${p.slug}"></canvas>
+          <span class="cover-badge">${escapeHTML(p.chain)}</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title-row">
+            <span class="card-title">${escapeHTML(p.name)}</span>
+            ${verifiedBadge}
+            <span class="card-loc">${escapeHTML(p.location || '')}</span>
           </div>
-        </div>
-        <p class="card-blurb">${escapeHTML(p.blurb)}</p>
-        <div class="card-tags">
-          <span class="chip chip-cat">${escapeHTML(p.category)}</span>
-          <span class="chip chip-chain">${escapeHTML(p.chain)}</span>
-          ${p.isLocal ? '<span class="chip" style="color:var(--green);border-color:rgba(52,211,153,.4)">Your submission</span>' : ''}
-        </div>
-        <div class="card-stats">
-          <div class="card-raised">${window.NexusStore.formatRaised(p)}<span>raised</span></div>
-          <div class="card-stage">${escapeHTML(p.stage)}</div>
+          <p class="card-blurb">${escapeHTML(p.blurb)}</p>
+          <div class="card-tags">
+            <span class="chip chip-cat" style="--cat:${catColor}">${escapeHTML(p.category)}</span>
+            ${p.isLocal ? '<span class="chip">Your submission</span>' : ''}
+          </div>
+          <div class="card-foot">
+            <div class="card-raised">${window.NexusStore.formatRaised(p)}<span>raised</span></div>
+            <div class="card-stage">${escapeHTML(p.stage)}</div>
+          </div>
         </div>
       </a>`;
   }
@@ -341,18 +284,25 @@
     playIntro(overlay);
     initReveals();
     initMagnetic();
-    initTilt();
     initCounters();
+    window.NexusArt.paintAll();
     document.dispatchEvent(new CustomEvent('nexus:ready'));
   });
 
   window.Nexus = {
     REDUCED,
+    icon,
+    verifiedBadge,
     toast,
     openModal,
     closeModal,
     projectCardHTML,
     escapeHTML,
-    refresh(scope) { initReveals(scope); initMagnetic(scope); initTilt(scope); initCounters(scope); },
+    refresh(scope) {
+      initReveals(scope);
+      initMagnetic(scope);
+      initCounters(scope);
+      window.NexusArt.paintAll(scope);
+    },
   };
 })();
