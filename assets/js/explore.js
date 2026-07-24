@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS explore — filterable, searchable, sortable directory
+   Ethos Labs explore — filterable, searchable, sortable directory
    with FLIP-style re-layout animation.
    ============================================================ */
 (function () {

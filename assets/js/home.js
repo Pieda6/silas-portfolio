@@ -1,5 +1,5 @@
 /* ============================================================
-   NEXUS landing — hero headline choreography, fanned project
+   Ethos Labs landing — hero headline choreography, fanned project
    card stack, ticker, featured grid.
    ============================================================ */
 (function () {

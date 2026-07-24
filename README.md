@@ -1,4 +1,4 @@
-# ◈ NEXUS — Where Web3 projects meet capital
+# ◈ Ethos Labs — Where Web3 projects meet capital
 
 An immersive, animation-heavy discovery platform for the Web3 space. Projects post their pitch and blurb; investors explore, filter, and connect with the teams behind them.
 
