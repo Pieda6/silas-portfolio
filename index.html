@@ -1,631 +1,159 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silas Oseghe Amiolemen | AI Performance & Quality Analyst</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            900: '#1e3a8a',
-                            950: '#172554',
-                        },
-                        slate: {
-                            850: '#152033',
-                        }
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            background-color: #f8fafc;
-        }
-
-        /* Abstract Data Grid Background for Hero */
-        .bg-grid-pattern {
-            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-
-        /* Timeline Styles */
-        .timeline-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 24px;
-            width: 2px;
-            background: #e2e8f0;
-        }
-        @media (min-width: 768px) {
-            .timeline-container::before {
-                left: 50%;
-                transform: translateX(-50%);
-            }
-        }
-
-        /* Scroll Reveal Utility Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Gradient Text */
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #60a5fa, #3b82f6);
-        }
-    </style>
+    <title>NEXUS — Where Web3 projects meet capital</title>
+    <meta name="description" content="NEXUS is the immersive discovery hub for Web3. Projects post their pitch; investors discover, connect, and fund the next generation of on-chain builders.">
+    <meta property="og:title" content="NEXUS — Where Web3 projects meet capital">
+    <meta property="og:description" content="Post your project. Get discovered. Get funded.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2322d3ee'/%3E%3Cstop offset='.5' stop-color='%238b5cf6'/%3E%3Cstop offset='1' stop-color='%23e879f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='%2304050c'/%3E%3Cpath d='M16 5 27 16 16 27 5 16Z' fill='url(%23g)'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="assets/vendor/lenis.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
-<body class="text-slate-800">
+<body>
 
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-200 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
-                    <span class="text-2xl font-bold tracking-tighter text-slate-900">S<span class="text-brand-600">.</span>O<span class="text-brand-600">.</span>A</span>
-                </div>
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">About</a>
-                    <a href="#expertise" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">Expertise</a>
-                    <a href="#experience" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">Experience</a>
-                    <a href="#education" class="text-slate-600 hover:text-brand-600 font-medium transition-colors">Education</a>
-                    <a href="#contact" class="px-5 py-2.5 bg-brand-600 text-white rounded-lg hover:bg-brand-700 font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Let's Talk</a>
-                </div>
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none">
-                        <i class="fas fa-bars text-2xl"></i>
-                    </button>
-                </div>
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+        <div id="hero-canvas"></div>
+        <div class="container hero-inner">
+            <div class="hero-badge"><span class="pulse"></span> 10+ projects live · investors onboarding now</div>
+            <h1>
+                <span class="line"><span>Where Web3 projects</span></span>
+                <span class="line"><span>meet <span class="text-gradient">the capital</span></span></span>
+                <span class="line"><span>that gets it.</span></span>
+            </h1>
+            <p class="hero-sub">NEXUS is the immersive discovery hub for the on-chain economy. Builders post their pitch. Investors explore, connect, and fund what's next — no gatekeepers, no noise.</p>
+            <div class="hero-ctas">
+                <a href="explore.html" class="btn btn-primary" data-magnetic>Explore projects ↗</a>
+                <a href="submit.html" class="btn btn-ghost" data-magnetic>Post your project</a>
             </div>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
-            <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#about" class="block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">About</a>
-                <a href="#expertise" class="block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Expertise</a>
-                <a href="#experience" class="block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Experience</a>
-                <a href="#education" class="block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 rounded-md">Education</a>
-                <a href="#contact" class="block px-3 py-3 text-brand-600 font-bold hover:bg-brand-50 rounded-md">Contact Me</a>
-            </div>
-        </div>
-    </nav>
+        <div class="hero-scroll-hint"><div class="wheel"></div>Scroll</div>
+    </section>
 
-    <section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-slate-950 overflow-hidden">
-        <!-- Background decorative elements -->
-        <div class="absolute inset-0 bg-grid-pattern opacity-20"></div>
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-600/20 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-400/10 blur-3xl"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center max-w-4xl mx-auto">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/50 border border-slate-700 text-brand-100 text-sm font-medium mb-8 animate-fade-in-up" style="animation-delay: 0.1s;">
-                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                    Available for new opportunities
+    <!-- ================= TICKER ================= -->
+    <div class="ticker">
+        <div class="ticker-track" id="ticker-track"></div>
+    </div>
+
+    <!-- ================= STATS ================= -->
+    <section class="section" style="padding-bottom:40px">
+        <div class="container">
+            <div class="stats-row">
+                <div class="stat-tile glass reveal">
+                    <div class="stat-value text-gradient" data-count="88.4" data-prefix="$" data-suffix="M" data-decimals="1">$0M</div>
+                    <div class="stat-label">Raised by listed projects</div>
                 </div>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 0.2s;">
-                    Silas Oseghe Amiolemen
-                </h1>
-                <h2 class="text-2xl md:text-3xl font-medium text-slate-300 mb-8 animate-fade-in-up" style="animation-delay: 0.3s;">
-                    AI Model <span class="text-gradient font-bold">Performance & Quality</span> Analyst
-                </h2>
-                <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.4s;">
-                    Evaluating, benchmarking, and optimizing the intelligence of tomorrow. Over 3 years of experience fine-tuning Large Language Models and Computer Vision systems to exceed 98% accuracy thresholds.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style="animation-delay: 0.5s;">
-                    <a href="#contact" class="px-8 py-4 bg-brand-600 text-white rounded-xl hover:bg-brand-500 font-semibold transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] flex items-center justify-center gap-2">
-                        Get in Touch <i class="fas fa-arrow-right text-sm"></i>
-                    </a>
-                    <a href="#experience" class="px-8 py-4 bg-slate-800 text-white rounded-xl hover:bg-slate-700 font-semibold transition-all border border-slate-700 flex items-center justify-center gap-2">
-                        View Experience
-                    </a>
+                <div class="stat-tile glass reveal" data-delay="0.1">
+                    <div class="stat-value text-gradient" data-count="6" data-suffix=" chains">0</div>
+                    <div class="stat-label">Ecosystems represented</div>
+                </div>
+                <div class="stat-tile glass reveal" data-delay="0.2">
+                    <div class="stat-value text-gradient" data-count="640" data-suffix="+">0</div>
+                    <div class="stat-label">Investor intros made</div>
+                </div>
+                <div class="stat-tile glass reveal" data-delay="0.3">
+                    <div class="stat-value text-gradient" data-count="72" data-suffix=" hrs">0</div>
+                    <div class="stat-label">Median time to first intro</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                <div class="reveal">
-                    <h3 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">About Me</h3>
-                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Bridging the gap between raw data and actionable AI intelligence.</h2>
-                    <p class="text-slate-600 leading-relaxed mb-6 text-lg">
-                        I am a results-driven Performance & Quality Analyst specializing in the evaluation and optimization of Large Language Models (LLMs), Computer Vision systems, and algorithmic search tools. 
-                    </p>
-                    <p class="text-slate-600 leading-relaxed mb-8 text-lg">
-                        My expertise lies in tracking critical KPIs, conducting root-cause analysis on system failure patterns, and delivering structured, actionable insights to engineering teams. I thrive in navigating complex evaluation frameworks to enforce rigorous quality standards.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-100">
-                        <div>
-                            <p class="text-4xl font-bold text-slate-900 mb-1">3+</p>
-                            <p class="text-sm text-slate-500 font-medium uppercase tracking-wider">Years Experience</p>
-                        </div>
-                        <div>
-                            <p class="text-4xl font-bold text-slate-900 mb-1">98%</p>
-                            <p class="text-sm text-slate-500 font-medium uppercase tracking-wider">Avg. Quality Score</p>
-                        </div>
-                    </div>
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="section" id="how">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">How it works</span>
+                <h2>Three steps from <span class="text-gradient">building</span> to <span class="text-gradient">backed</span>.</h2>
+                <p>A launchpad-grade showcase without the launchpad politics. Your project, your narrative, in front of the people writing checks.</p>
+            </div>
+
+            <div class="story-step">
+                <div class="story-copy reveal">
+                    <div class="story-num">01</div>
+                    <h3>Post your project</h3>
+                    <p>Ship your pitch in minutes: name, blurb, chain, stage, and what you're raising. No applications, no waitlists — your project page goes live instantly.</p>
                 </div>
-                
-                <div class="reveal relative">
-                    <div class="absolute inset-0 bg-brand-50 transform translate-x-4 translate-y-4 rounded-2xl z-0"></div>
-                    <div class="relative z-10 bg-white border border-slate-200 rounded-2xl p-8 shadow-xl">
-                        <div class="flex items-center gap-4 mb-8">
-                            <div class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center text-brand-600 text-2xl">
-                                <i class="fas fa-bullseye"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold text-slate-900">Core Focus</h4>
-                                <p class="text-slate-500">Quality Assurance Benchmarking</p>
-                            </div>
-                        </div>
-                        <ul class="space-y-4">
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-check-circle text-brand-500 mt-1"></i>
-                                <span class="text-slate-700">Identifying Model Failure Points</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-check-circle text-brand-500 mt-1"></i>
-                                <span class="text-slate-700">Complex Guideline Interpretation</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-check-circle text-brand-500 mt-1"></i>
-                                <span class="text-slate-700">High-Volume Data Auditing</span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <i class="fas fa-check-circle text-brand-500 mt-1"></i>
-                                <span class="text-slate-700">Actionable Insight Reporting</span>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="story-visual reveal">
+                    <div class="orbit-ring r1"></div>
+                    <div class="orbit-ring r2"></div>
+                    <div class="orbit-core">🛠️</div>
+                    <div class="orbit-node">📡</div>
+                    <div class="orbit-node">📜</div>
+                    <div class="orbit-node">⛓️</div>
+                </div>
+            </div>
+
+            <div class="story-step">
+                <div class="story-copy reveal">
+                    <div class="story-num">02</div>
+                    <h3>Get discovered</h3>
+                    <p>Investors browse a live directory filtered by category, chain, and stage. Trending projects surface to the top — signal, not follower counts.</p>
+                </div>
+                <div class="story-visual reveal">
+                    <div class="orbit-ring r1"></div>
+                    <div class="orbit-ring r2"></div>
+                    <div class="orbit-core">🔭</div>
+                    <div class="orbit-node">💠</div>
+                    <div class="orbit-node">🧭</div>
+                    <div class="orbit-node">✨</div>
+                </div>
+            </div>
+
+            <div class="story-step">
+                <div class="story-copy reveal">
+                    <div class="story-num">03</div>
+                    <h3>Connect &amp; close</h3>
+                    <p>One click opens a direct line to the founding team. Warm intros at cold-email speed — then take the conversation wherever deals get done.</p>
+                </div>
+                <div class="story-visual reveal">
+                    <div class="orbit-ring r1"></div>
+                    <div class="orbit-ring r2"></div>
+                    <div class="orbit-core">🤝</div>
+                    <div class="orbit-node">⚡</div>
+                    <div class="orbit-node">💬</div>
+                    <div class="orbit-node">💎</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="expertise" class="py-24 bg-slate-50 border-y border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
-                <h3 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">Competencies</h3>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Technical & Analytical Toolkit</h2>
-                <p class="text-slate-600 text-lg">A comprehensive suite of skills tailored for rigorous AI evaluation and system optimization.</p>
+    <!-- ================= FEATURED ================= -->
+    <section class="section" id="featured">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Trending now</span>
+                <h2>Projects the smart money is watching.</h2>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Skill Card 1 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-md transition-shadow reveal">
-                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-xl mb-6">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Performance & QA</h4>
-                    <ul class="space-y-3">
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Model Performance Evaluation</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> QA Benchmarking</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Root-Cause Analysis</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> KPI & Accuracy Tracking</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Risk & Compliance Assessment</li>
-                    </ul>
-                </div>
-
-                <!-- Skill Card 2 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-md transition-shadow reveal" style="transition-delay: 0.1s;">
-                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl mb-6">
-                        <i class="fas fa-microchip"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Domain Expertise</h4>
-                    <ul class="space-y-3">
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> LLM Evaluation & Ranking</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Search Relevance Assessment</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Multimodal Validation (Text/Image/Video)</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Named Entity Recognition (NER)</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Sentiment Analysis</li>
-                    </ul>
-                </div>
-
-                <!-- Skill Card 3 -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-md transition-shadow reveal" style="transition-delay: 0.2s;">
-                    <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl mb-6">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-4">Analytical Skills</h4>
-                    <ul class="space-y-3">
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Structured Engineering Feedback</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Independent Problem-Solving</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Guideline Interpretation</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Meticulous Attention to Detail</li>
-                        <li class="text-slate-600 flex items-center gap-2"><i class="fas fa-angle-right text-brand-400 text-sm"></i> Time Management (Remote)</li>
-                    </ul>
-                </div>
+            <div class="project-grid" id="featured-grid"></div>
+            <div style="text-align:center;margin-top:44px" class="reveal">
+                <a href="explore.html" class="btn btn-ghost" data-magnetic>View the full directory →</a>
             </div>
         </div>
     </section>
 
-    <section id="experience" class="py-24 bg-white relative">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h3 class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2">Career Journey</h3>
-                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Professional Experience</h2>
-            </div>
-
-            <div class="relative timeline-container">
-                
-                <!-- Job 1 -->
-                <div class="relative flex flex-col md:flex-row justify-between mb-16 reveal w-full">
-                    <div class="md:w-5/12 mb-4 md:mb-0 md:text-right md:pr-12 pl-12 md:pl-0">
-                        <h4 class="text-xl font-bold text-slate-900">Video Model Performance & QA Analyst</h4>
-                        <div class="text-brand-600 font-medium mb-1">Atlas Capture</div>
-                        <div class="inline-flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-100 px-3 py-1 rounded-full mt-2">
-                            <i class="far fa-calendar-alt"></i> Mar 2025 – Present
-                        </div>
-                    </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-brand-600 border-4 border-white rounded-full mt-1.5 shadow-[0_0_0_4px_rgba(37,99,235,0.1)] z-10"></div>
-                    <div class="md:w-5/12 pl-12 md:pl-12">
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Conduct segment-by-segment performance audits on first-person video datasets of household tasks, verifying data integrity for CV model training.
-                            </li>
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Evaluate and revise annotation accuracy against strict quality assurance standards to minimize algorithmic error rates.
-                            </li>
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Enforce quality control protocols across high-volume visual pipelines to ensure consistent model performance.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Job 2 -->
-                <div class="relative flex flex-col md:flex-row-reverse justify-between mb-16 reveal w-full">
-                    <div class="md:w-5/12 mb-4 md:mb-0 pl-12 md:pl-12">
-                        <h4 class="text-xl font-bold text-slate-900">AI Performance & Evaluation Analyst</h4>
-                        <div class="text-brand-600 font-medium mb-1">TELUS International AI</div>
-                        <div class="inline-flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-100 px-3 py-1 rounded-full mt-2">
-                            <i class="far fa-calendar-alt"></i> Nov 2024 – Jan 2025
-                        </div>
-                    </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-300 border-4 border-white rounded-full mt-1.5 z-10"></div>
-                    <div class="md:w-5/12 pl-12 md:pr-12 md:pl-0 md:text-right">
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="relative md:before:hidden before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full   md:after:content-[''] md:after:absolute md:after:right-[-1.5rem] md:after:top-2 md:after:w-1.5 md:after:h-1.5 md:after:bg-slate-300 md:after:rounded-full text-left md:text-right">
-                                Audited LLM outputs across platforms, evaluating against strict KPIs for factual accuracy, safety, and coherence.
-                            </li>
-                            <li class="relative md:before:hidden before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full   md:after:content-[''] md:after:absolute md:after:right-[-1.5rem] md:after:top-2 md:after:w-1.5 md:after:h-1.5 md:after:bg-slate-300 md:after:rounded-full text-left md:text-right">
-                                Sustained Quality Performance Score >98% under complex, evolving frameworks.
-                            </li>
-                            <li class="relative md:before:hidden before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full   md:after:content-[''] md:after:absolute md:after:right-[-1.5rem] md:after:top-2 md:after:w-1.5 md:after:h-1.5 md:after:bg-slate-300 md:after:rounded-full text-left md:text-right">
-                                Conducted root-cause analysis on failure patterns, delivering structured feedback to engineering teams.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Job 3 -->
-                <div class="relative flex flex-col md:flex-row justify-between mb-16 reveal w-full">
-                    <div class="md:w-5/12 mb-4 md:mb-0 md:text-right md:pr-12 pl-12 md:pl-0">
-                        <h4 class="text-xl font-bold text-slate-900">Generative AI Evaluator</h4>
-                        <div class="text-brand-600 font-medium mb-1">CrowdGen (by Appen)</div>
-                        <div class="inline-flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-100 px-3 py-1 rounded-full mt-2">
-                            <i class="far fa-calendar-alt"></i> Jul 2024 – Sep 2024
-                        </div>
-                    </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-300 border-4 border-white rounded-full mt-1.5 z-10"></div>
-                    <div class="md:w-5/12 pl-12 md:pl-12">
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Benchmarked conversational AI for "Project Heather," focusing on cultural fine-tuning.
-                            </li>
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Authored 500+ domain-specific stress-test prompts covering nuanced socio-cultural concepts.
-                            </li>
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Conducted comparative performance ranking, grading for safety, helpfulness, and alignment.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Job 4 -->
-                <div class="relative flex flex-col md:flex-row-reverse justify-between mb-16 reveal w-full">
-                    <div class="md:w-5/12 mb-4 md:mb-0 pl-12 md:pl-12">
-                        <h4 class="text-xl font-bold text-slate-900">System Performance Analyst</h4>
-                        <div class="text-brand-600 font-medium mb-1">TELUS International AI</div>
-                        <div class="inline-flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-100 px-3 py-1 rounded-full mt-2">
-                            <i class="far fa-calendar-alt"></i> Mar 2024 – May 2024
-                        </div>
-                    </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-300 border-4 border-white rounded-full mt-1.5 z-10"></div>
-                    <div class="md:w-5/12 pl-12 md:pr-12 md:pl-0 md:text-right">
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="relative md:before:hidden before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full   md:after:content-[''] md:after:absolute md:after:right-[-1.5rem] md:after:top-2 md:after:w-1.5 md:after:h-1.5 md:after:bg-slate-300 md:after:rounded-full text-left md:text-right">
-                                Audited moderation systems by analyzing 15,000+ pieces of content for safety compliance.
-                            </li>
-                            <li class="relative md:before:hidden before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full   md:after:content-[''] md:after:absolute md:after:right-[-1.5rem] md:after:top-2 md:after:w-1.5 md:after:h-1.5 md:after:bg-slate-300 md:after:rounded-full text-left md:text-right">
-                                Evaluated sentiment models for brand-monitoring AI tools.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                 <!-- Job 5 -->
-                 <div class="relative flex flex-col md:flex-row justify-between reveal w-full">
-                    <div class="md:w-5/12 mb-4 md:mb-0 md:text-right md:pr-12 pl-12 md:pl-0">
-                        <h4 class="text-xl font-bold text-slate-900">Search Relevance Assessor</h4>
-                        <div class="text-brand-600 font-medium mb-1">Appen</div>
-                        <div class="inline-flex items-center gap-2 text-sm text-slate-500 font-medium bg-slate-100 px-3 py-1 rounded-full mt-2">
-                            <i class="far fa-calendar-alt"></i> Oct 2023 – Jan 2024
-                        </div>
-                    </div>
-                    <div class="absolute left-6 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-300 border-4 border-white rounded-full mt-1.5 z-10"></div>
-                    <div class="md:w-5/12 pl-12 md:pl-12">
-                        <ul class="space-y-3 text-slate-600">
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Evaluated search engine algorithms via the "Needs Met" framework.
-                            </li>
-                            <li class="relative before:content-[''] before:absolute before:left-[-1.5rem] before:top-2 before:w-1.5 before:h-1.5 before:bg-slate-300 before:rounded-full">
-                                Generated analytical insights to directly improve geolocation and local query accuracy.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div class="mt-20 pt-16 border-t border-slate-200 reveal">
-                <h3 class="text-2xl font-bold text-slate-900 mb-8 text-center">Additional Contract & Freelance Analytics</h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                        <h4 class="font-bold text-slate-800 text-lg mb-1">Doc. Risk Analyst</h4>
-                        <p class="text-sm text-brand-600 font-medium mb-3">Fintech Client • 2023</p>
-                        <p class="text-slate-600 text-sm">Audited scanned financial documents to optimize AI data-extraction and evaluated conversational AI for regulatory risk mitigation.</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                        <h4 class="font-bold text-slate-800 text-lg mb-1">Topic/Sentiment Analyst</h4>
-                        <p class="text-sm text-brand-600 font-medium mb-3">Brandwatch • 2023</p>
-                        <p class="text-slate-600 text-sm">Analyzed social data to benchmark AI context understanding and sentiment classification accuracy.</p>
-                    </div>
-                    <div class="bg-slate-50 p-6 rounded-xl border border-slate-200">
-                        <h4 class="font-bold text-slate-800 text-lg mb-1">Speech Analytics Assessor</h4>
-                        <p class="text-sm text-brand-600 font-medium mb-3">CallMiner • 2023</p>
-                        <p class="text-slate-600 text-sm">Audited conversational sentiment by tagging acoustic phrases with behavioral outcomes to improve speech analytics.</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section id="education" class="py-24 bg-slate-900 text-white relative">
-        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16">
-                <!-- Education -->
-                <div class="reveal">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-brand-400 text-xl border border-slate-700">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <h2 class="text-3xl font-bold">Academic Background</h2>
-                    </div>
-                    
-                    <div class="bg-slate-800/50 p-8 rounded-2xl border border-slate-700 backdrop-blur-sm">
-                        <div class="text-brand-400 font-semibold mb-2">Graduated 2019</div>
-                        <h3 class="text-2xl font-bold mb-2">Bachelor of Engineering (B.Eng)</h3>
-                        <p class="text-xl text-slate-300 mb-4">Electrical Engineering</p>
-                        <div class="flex items-center gap-2 text-slate-400">
-                            <i class="fas fa-university text-slate-500"></i> University of Nigeria, Nsukka
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Certifications -->
-                <div class="reveal" style="transition-delay: 0.2s;">
-                    <div class="flex items-center gap-4 mb-8">
-                        <div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center text-brand-400 text-xl border border-slate-700">
-                            <i class="fas fa-certificate"></i>
-                        </div>
-                        <h2 class="text-3xl font-bold">Certifications</h2>
-                    </div>
-                    
-                    <div class="space-y-4">
-                        <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 backdrop-blur-sm flex justify-between items-center group hover:bg-slate-800 transition-colors">
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-1">AI Data Annotation & QA</h3>
-                                <p class="text-slate-400 text-sm">TELUS International AI Community</p>
-                            </div>
-                            <div class="text-brand-400 font-mono font-medium">2024</div>
-                        </div>
-                        
-                        <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 backdrop-blur-sm flex justify-between items-center group hover:bg-slate-800 transition-colors">
-                            <div>
-                                <h3 class="text-lg font-bold text-white mb-1">Search Quality Rating</h3>
-                                <p class="text-slate-400 text-sm">Appen</p>
-                            </div>
-                            <div class="text-brand-400 font-mono font-medium">2023</div>
-                        </div>
-                    </div>
-                </div>
+    <!-- ================= CTA ================= -->
+    <section class="section">
+        <div class="container">
+            <div class="glass reveal" style="padding:70px 40px;text-align:center;border-radius:28px;position:relative;overflow:hidden">
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 120%,rgba(139,92,246,.25),transparent 70%);pointer-events:none"></div>
+                <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);max-width:640px;margin:0 auto 18px">Building something the world hasn't seen yet?</h2>
+                <p style="color:var(--muted);max-width:480px;margin:0 auto 34px">Put it in front of the investors hunting for exactly that. Listing takes three minutes.</p>
+                <a href="submit.html" class="btn btn-primary" data-magnetic>Launch your project on NEXUS 🚀</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-brand-600 rounded-3xl overflow-hidden shadow-2xl reveal">
-                <div class="grid lg:grid-cols-5 h-full">
-                    <div class="lg:col-span-2 bg-brand-900 text-white p-12 flex flex-col justify-between">
-                        <div>
-                            <h3 class="text-3xl font-bold mb-4">Let's Connect</h3>
-                            <p class="text-brand-200 mb-12">I'm currently available for full-time opportunities or consulting roles in AI Performance & Quality Assurance.</p>
-                            
-                            <div class="space-y-6">
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-brand-300">
-                                        <i class="fas fa-envelope"></i>
-                                    </div>
-                                    <a href="mailto:nastrades7@gmail.com" class="text-lg hover:text-brand-300 transition-colors">nastrades7@gmail.com</a>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-brand-300">
-                                        <i class="fas fa-phone-alt"></i>
-                                    </div>
-                                    <a href="tel:+2348163954919" class="text-lg hover:text-brand-300 transition-colors">+234 816 395 4919</a>
-                                </div>
-                                <div class="flex items-center gap-4">
-                                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-brand-300">
-                                        <i class="fas fa-map-marker-alt"></i>
-                                    </div>
-                                    <span class="text-lg">Benin City, Nigeria</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-16">
-                            <h4 class="text-sm font-semibold text-brand-400 uppercase tracking-wider mb-4">Languages</h4>
-                            <div class="flex gap-4">
-                                <span class="px-3 py-1 bg-white/10 rounded-full text-sm">English (Native)</span>
-                                <span class="px-3 py-1 bg-white/10 rounded-full text-sm">Igbo (Native)</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="lg:col-span-3 p-12 bg-slate-50 flex items-center justify-center">
-                        <form class="w-full max-w-lg" onsubmit="event.preventDefault(); showMessage();">
-                            <h3 class="text-2xl font-bold text-slate-900 mb-8">Send a Message</h3>
-                            
-                            <div id="form-success" class="hidden mb-6 p-4 bg-green-50 text-green-700 border border-green-200 rounded-lg flex items-center gap-3">
-                                <i class="fas fa-check-circle"></i> Message simulated successfully. (This is a static demo)
-                            </div>
-
-                            <div class="space-y-5">
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Name</label>
-                                    <input type="text" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="John Doe" required>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
-                                    <input type="email" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all" placeholder="john@example.com" required>
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-medium text-slate-700 mb-1">Message</label>
-                                    <textarea rows="4" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all resize-none" placeholder="How can we work together?" required></textarea>
-                                </div>
-                                <button type="submit" class="w-full py-4 bg-brand-600 text-white rounded-lg font-bold hover:bg-brand-700 transition-colors shadow-md">
-                                    Send Message
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-slate-950 py-8 border-t border-slate-900 text-center">
-        <p class="text-slate-500 text-sm">&copy; 2026 Silas Oseghe Amiolemen. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Form simulation
-        function showMessage() {
-            const successBox = document.getElementById('form-success');
-            successBox.classList.remove('hidden');
-            setTimeout(() => {
-                successBox.classList.add('hidden');
-            }, 5000);
-            document.querySelector('form').reset();
-        }
-
-        // Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
-
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
-
-        // Close mobile menu on link click
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                menu.classList.add('hidden');
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) {
-                nav.classList.add('shadow-md');
-            } else {
-                nav.classList.remove('shadow-md');
-            }
-        });
-
-        // Scroll Reveal Animation via Intersection Observer
-        document.addEventListener('DOMContentLoaded', () => {
-            const reveals = document.querySelectorAll('.reveal');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
-            };
-
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) {
-                        return;
-                    } else {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, revealOptions);
-
-            reveals.forEach(reveal => {
-                revealOnScroll.observe(reveal);
-            });
-        });
-    </script>
+    <script src="assets/vendor/three.min.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
+    <script src="assets/vendor/ScrollTrigger.min.js"></script>
+    <script src="assets/vendor/lenis.min.js"></script>
+    <script src="assets/js/store.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/webgl.js"></script>
+    <script src="assets/js/home.js"></script>
 </body>
 </html>
